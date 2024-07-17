@@ -4,8 +4,14 @@ Palate-Pilot is a web application that allows users to explore different countri
 
 ## Table of Contents
 
+- [Getting Started](#getting-started)
 - [User Story](#user-story)
 - [Technologies](#technologies)
+
+##Getting Started
+- a link to your deployed app
+- a link to your planning materials
+- a link to the back-end repository
   
 ## User Story
 
