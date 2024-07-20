@@ -1,20 +1,40 @@
-// src/components/ReviewPage.jsx
-import React from 'react';
-import Reviews from './Review';
+// src/components/ReviewDish.jsx
+import React, { useState } from 'react';
+import CreateReview from './createReview';
+import ReadReviews from './readReviews';
+import UpdateReview from './updateReview';
+import DeleteReview from './deleteReview';
 
-const ReviewPage = () => {
-  const reviews = [
-    { dishName: "Butter Chicken", review: "Delicious and flavorful!" },
-    { dishName: "Peking Duck", review: "Crispy and flavorful!" },
-    { dishName: "Sushi", review: "Fresh and exquisite!" },
-  ];
+const ReviewDish = () => {
+  const [reviews, setReviews] = useState([
+    { id: 1, dishName: "Butter Chicken", review: "Delicious and flavorful!" },
+    { id: 2, dishName: "Peking Duck", review: "Crispy and flavorful!" },
+    { id: 3, dishName: "Sushi", review: "Fresh and exquisite!" }
+  ]);
+  const [reviewToEdit, setReviewToEdit] = useState(null);
+
+  const addReview = (newReview) => {
+    setReviews([...reviews, { id: reviews.length + 1, ...newReview }]);
+  };
+
+  const updateReview = (id, updatedReview) => {
+    setReviews(reviews.map((review) => (review.id === id ? { id, ...updatedReview } : review)));
+    setReviewToEdit(null);
+  };
+
+  const deleteReview = (index) => {
+    setReviews(reviews.filter((_, i) => i !== index));
+  };
 
   return (
-    <div>
-      <h2>Reviews of the different dishes</h2>
-      <Reviews reviews={reviews} />
+    <div className="container mt-4">
+      <CreateReview addReview={addReview} />
+      <ReadReviews reviews={reviews} />
+      {reviewToEdit && <UpdateReview reviewToEdit={reviewToEdit} updateReview={updateReview} />}
+      <DeleteReview reviews={reviews} deleteReview={deleteReview} />
     </div>
   );
 };
 
-export default ReviewPage;
+export default ReviewDish;
+
