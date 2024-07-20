@@ -55,6 +55,7 @@ function App() {
 
   return ( 
     <>
+    <Router>
       <Navbar />
       <Switch>
         <Route exact path="/">
@@ -78,6 +79,7 @@ function App() {
         <Route path="/reviews" component={ReviewPage} />
       </Switch>
     </Router>
+    </>
   );
 }
 
