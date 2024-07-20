@@ -58,10 +58,6 @@ function App() {
 
       <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
 
-      <nav id="profile-button">
-        <NavLink to='/profile' />
-      </nav>
-
       <div>
         {data}
       </div>
