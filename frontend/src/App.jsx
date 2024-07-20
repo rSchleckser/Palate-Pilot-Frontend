@@ -3,12 +3,12 @@ import Card from './components/Card';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('/')
-      .then((res) => res.text())
-      .then((data) => setMessage(data))
+      .then((res) => res.json())
+      .then((data) => setData(data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -54,6 +54,10 @@ function App() {
       <div>
         <h1>PalatePilot</h1>
         <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
+      </div>
+
+      <div>
+        {data}
       </div>
 
       <div className="container">
