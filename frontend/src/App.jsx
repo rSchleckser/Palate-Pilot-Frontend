@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import './App.css';
-import { NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
+import Profile from './components/Profile';
 
 function App() {
   const [data, setData] = useState([]);
@@ -18,42 +19,13 @@ function App() {
     console.log('Button has been clicked!');
   };
 
-  const countries = [
-    { 
-      country: "India", 
-      facts: "India is the seventh-largest country by land area.",
-      dish: {
-        name: "Butter Chicken",
-        image: "/images/butter-chicken.jpg",
-        description: "A rich and creamy dish with a blend of spices.",
-        review: "Delicious and flavorful!"
-      }
-    },
-    {
-      country: "China",
-      facts: "China is the most populous country in the world.",
-      dish: {
-        name: "Peking Duck",
-        image: "/images/peking-duck.jpg",
-        description: "A famous duck dish known for its crispy skin.",
-        review: "Crispy and flavorful!"
-      }
-    },
-    {
-      country: "Japan",
-      facts: "Japan is an island country in East Asia.",
-      dish: {
-        name: "Sushi",
-        image: "/images/sushi.jpg",
-        description: "A traditional Japanese dish with vinegared rice.",
-        review: "Fresh and exquisite!"
-      }
-    }
-  ];
-
 
   return ( 
     <>
+      <Routes>
+        <Route path='/' element={App} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
       <Navbar />
 
       <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
