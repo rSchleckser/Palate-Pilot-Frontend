@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router';
 import Card from './components/Card';
 import './App.css';
 
@@ -49,12 +50,17 @@ function App() {
     }
   ];
 
+
   return ( 
     <>
       <div>
         <h1>PalatePilot</h1>
         <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
       </div>
+
+      <nav id="profile-button">
+        <NavLink to='/profile' />
+      </nav>
 
       <div>
         {data}
