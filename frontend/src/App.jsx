@@ -23,9 +23,10 @@ function App() {
   return ( 
     <>
       <Routes>
-        <Route path='/' element={App} />
+        <Route path='/' element={<App />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
+      
       <Navbar />
 
       <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>

@@ -6,7 +6,7 @@ const Navbar = () => {
     return(
         <>
         <div>
-            {/* Logo image here */}
+            <img src="https://imgur.com/a/nqal1JW" alt="logo" id="logo" />
         </div>
         <div>
             <h1>Welcome to PalatePilot!</h1>
