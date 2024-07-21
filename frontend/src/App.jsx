@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 // import Cards from './components/Card';
 import Navbar from './components/Navbar';
 // import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
-// import Login from './components/Login';
-// import Signup from './components/signUp'; 
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
 
-  const handleClick = () => {
-    console.log('Button has been clicked!');
-  };
+  // const handleClick = () => {
+  //   console.log('Button has been clicked!');
+  // };
 
   useEffect(() => {
     fetch('/api/data') // Adjust the endpoint if needed
@@ -25,9 +25,14 @@ function App() {
       
       <Navbar />
           <div>
-            <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
+            {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
               CLICK HERE!
-            </button>
+            </button> */}
+
+          <SignUp />
+
+          <Login />
+
             <div>
               {data.length > 0 ? (
                 <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
