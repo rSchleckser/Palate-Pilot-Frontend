@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { useEffect, useState } from 'react';
+=======
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom'; // No Router import here
 import Card from './components/Card';
 import Navbar from './components/Navbar';
@@ -6,6 +10,14 @@ import ReviewPage from './components/ReviewDish'; // Ensure this import is corre
 import Login from './components/Login';
 import Signup from './components/Signup'; 
 import './App.css';
+=======
+import Card from './components/Card';
+import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar';
+import Profile from './components/Profile';
+>>>>>>> 9c5f1c7821fbb847bf01541b1e31372060bf7b69
+>>>>>>> ae77ca691bf4ce1baa5dc27739859281ca87b2d2
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,11 +28,15 @@ function App() {
       .then((data) => setData(data))
       .catch((err) => console.log(err));
   }, []);
+<<<<<<< HEAD
+  return (
+=======
 
   const handleClick = () => {
     console.log('Button has been clicked!');
   };
 
+<<<<<<< HEAD
   const countries = [
     { 
       country: "India", 
@@ -55,8 +71,19 @@ function App() {
   ];
 
   return (
+=======
+
+  return ( 
+>>>>>>> 9c5f1c7821fbb847bf01541b1e31372060bf7b69
+>>>>>>> ae77ca691bf4ce1baa5dc27739859281ca87b2d2
     <>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
+      
       <Navbar />
+<<<<<<< HEAD
       <Routes>
         <Route path="/" element={
           <div>
@@ -82,9 +109,25 @@ function App() {
         } />
         <Route path="/reviews" element={<ReviewPage />} />
       </Routes>
+=======
+
+      <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
+
+      <div>
+        {data}
+      </div>
+
+      <div className="container">
+        <h2>Select a Continent</h2>
+      </div>
+>>>>>>> ae77ca691bf4ce1baa5dc27739859281ca87b2d2
     </>
   );
 }
 
+<<<<<<< HEAD
 export default App;
 
+=======
+export default App;
+>>>>>>> ae77ca691bf4ce1baa5dc27739859281ca87b2d2
