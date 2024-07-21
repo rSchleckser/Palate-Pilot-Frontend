@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom'; // No Router import here
 import Card from './components/Card';
-import './App.css';
-import { NavLink } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
+import Login from './components/Login';
+import Signup from './components/Signup'; 
+import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('/')
+    fetch('/api/data') // Adjust the endpoint if needed
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));
@@ -52,19 +54,22 @@ function App() {
     }
   ];
 
-
-  return ( 
+  return (
     <>
       <Navbar />
-      <Switch>
-        <Route exact path="/">
+      <Routes>
+        <Route path="/" element={
           <div>
-            <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
-
+            <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
+              CLICK HERE!
+            </button>
             <div>
-              {data}
+              {data.length > 0 ? (
+                <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
+              ) : (
+                <p>Loading data...</p>
+              )}
             </div>
-
             <div className="container">
               <h2>Select a Continent</h2>
               <div className="card-container">
@@ -74,11 +79,12 @@ function App() {
               </div>
             </div>
           </div>
-        </Route>
-        <Route path="/reviews" component={ReviewPage} />
-      </Switch>
-    </Router>
+        } />
+        <Route path="/reviews" element={<ReviewPage />} />
+      </Routes>
+    </>
   );
 }
 
 export default App;
+
