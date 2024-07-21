@@ -25,37 +25,42 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div className='signup-container'>
       <h2>Signup Here!</h2>
-      <form onSubmit={(event) => { event.preventDefault(); handleSubmit(); }}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit();
+        }}
+      >
         <div>
           <label>Username:</label>
-          <input 
-            type="text" 
-            value={username} 
-            onChange={handleUsernameChange} 
-            required 
+          <input
+            type='text'
+            value={username}
+            onChange={handleUsernameChange}
+            required
           />
         </div>
         <div>
           <label>Email:</label>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={handleEmailChange} 
-            required 
+          <input
+            type='email'
+            value={email}
+            onChange={handleEmailChange}
+            required
           />
         </div>
         <div>
           <label>Password:</label>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={handlePasswordChange} 
-            required 
+          <input
+            type='password'
+            value={password}
+            onChange={handlePasswordChange}
+            required
           />
         </div>
-        <button type="submit">Signup</button>
+        <button type='submit'>Signup</button>
       </form>
     </div>
   );
