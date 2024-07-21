@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -8,7 +8,7 @@ function App() {
       .then((data) => setMessage(data))
       .catch((err) => console.log(err));
   }, []);
-  return ( 
+  return (
     <>
       <div>
         <h1>{message}</h1>
