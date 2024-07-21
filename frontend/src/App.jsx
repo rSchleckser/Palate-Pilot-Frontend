@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 // import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
 import Login from './components/Login';
-import SignUp from './components/SignUp';
+import SignUp from './components/signUp';
+import Cards from './components/Card'
 import './App.css';
 
 function App() {
