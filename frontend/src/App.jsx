@@ -1,23 +1,12 @@
-<<<<<<< HEAD
-import { useEffect, useState } from 'react';
-=======
+
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom'; // No Router import here
 import Card from './components/Card';
 import Navbar from './components/Navbar';
 import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
 import Login from './components/Login';
-import Signup from './components/Signup'; 
+import Signup from './components/signUp'; 
 import './App.css';
-=======
-import Card from './components/Card';
-import './App.css';
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar';
-import Profile from './components/Profile';
->>>>>>> 9c5f1c7821fbb847bf01541b1e31372060bf7b69
->>>>>>> ae77ca691bf4ce1baa5dc27739859281ca87b2d2
 
 function App() {
   const [data, setData] = useState([]);
