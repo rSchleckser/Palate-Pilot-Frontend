@@ -1,0 +1,18 @@
+* {
+    text-align: center;
+}
+
+div {
+    background-color: #CAF4FF;
+    color: #5AB2FF;
+    display: inline-block;
+    margin: 5px;
+}
+
+img {
+    margin-right: 25px;
+}
+
+#userIcon {
+    margin-left: 25px;
+}

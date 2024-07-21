@@ -1,21 +1,17 @@
 // src/components/Card.jsx
-import React, { useState } from 'react';
-import DropCard from './DropCard';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Card = ({ country, facts, dish }) => {
-  const [showDropCard, setShowDropCard] = useState(false);
+const Cards = () => {
+  const [card, setCard] = useState([]);
 
-  const handleToggle = () => {
-    setShowDropCard(!showDropCard);
-  };
-
-  return (
-    <div className="card">
-      <h2 onClick={handleToggle}>{country}</h2>
-      <p>{facts}</p>
-      {showDropCard && <DropCard dish={dish} />}
-    </div>
-  );
-};
-
-export default Card;
+  useEffect(() => {
+    axios.get('http://localhost:3000/cards')
+    .then(res => {
+      setCard(res.data);
+    })
+    .catch(err => {
+      console.log()
+    })
+  })
+}

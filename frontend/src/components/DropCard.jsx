@@ -1,6 +1,4 @@
 // src/components/DropCard.jsx
-import React from 'react';
-
 const DropCard = ({ dish }) => {
   return (
     <div className="drop-card">

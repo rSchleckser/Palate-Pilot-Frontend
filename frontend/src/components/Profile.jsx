@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import Favorites from "./Favorites";
 import Navbar from "./Navbar";
 import axios from 'axios';

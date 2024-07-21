@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './components/Card';
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
@@ -22,14 +22,10 @@ function App() {
 
   return ( 
     <>
-      <Routes>
-        <Route path='/' element={<App />} />
-        <Route path='/profile' element={<Profile />} />
-      </Routes>
       
       <Navbar />
 
-      <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button>
+      {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>CLICK HERE!</button> */}
 
       <div>
         {data}
