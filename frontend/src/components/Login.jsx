@@ -1,47 +1,39 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle email input change
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const { email, password } = formData;
 
-  // Handle password input change
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setErrors({});
 
     try {
-      const response = await axios.post('/auth/login', { email, password });
-      // Store token in local storage or context (adjust based on your needs)
-      localStorage.setItem('token', response.data.token);
-      // Redirect to another page upon successful login
-      navigate('/'); // Adjust to your desired route
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        // Handle validation errors from the server
-        const errorMessages = error.response.data.errors.reduce((acc, err) => {
-          acc[err.param] = err.msg;
+      const res = await axios.post('/auth/login', { email, password });
+      localStorage.setItem('token', res.data.token);
+      navigate('/');
+    } catch (err) {
+      if (err.response && err.response.data.errors) {
+        const errorMessages = err.response.data.errors.reduce((acc, error) => {
+          acc[error.param] = error.msg;
           return acc;
         }, {});
         setErrors(errorMessages);
       } else {
-        // Handle general errors
-        console.error('Login error:', error);
+        console.error('Login error:', err);
       }
     } finally {
       setLoading(false);
@@ -51,14 +43,15 @@ const Login = () => {
   return (
     <div className='login-container'>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className='form-group'>
           <label htmlFor='email'>Email:</label>
           <input
             type='email'
             id='email'
+            name='email'
             value={email}
-            onChange={handleEmailChange}
+            onChange={onChange}
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
             required
           />
@@ -71,8 +64,9 @@ const Login = () => {
           <input
             type='password'
             id='password'
+            name='password'
             value={password}
-            onChange={handlePasswordChange}
+            onChange={onChange}
             className={`form-control ${errors.password ? 'is-invalid' : ''}`}
             required
           />
