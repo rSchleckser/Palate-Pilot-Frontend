@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-// import Cards from './components/Card';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 // import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
 import Login from './components/Login';
 import SignUp from './components/signUp';
-import Cards from './components/Card'
+// import Cards from './components/Card'
 import './App.css';
 
 function App() {
@@ -23,34 +23,34 @@ function App() {
 
   return (
     <>
-      
-      <Navbar />
-          <div>
-            {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
+      <Routes>
+        <Route path='/' element={<Navbar />} />
+        <Route path='/auth/signup' element={<SignUp />} />
+        <Route path='/auth/login' element={<Login />} />
+      </Routes>
+
+      <div>
+        {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
               CLICK HERE!
             </button> */}
 
-          <SignUp />
-
-          <Login />
-
-            <div>
-              {data.length > 0 ? (
-                <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
-              ) : (
-                <p>Loading data...</p>
-              )}
-            </div>
-            <div className="container">
-              <h2>Select a Continent</h2>
-              {/* <div className="card-container">
+        <div>
+          {data.length > 0 ? (
+            <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
+          ) : (
+            <p>Loading data...</p>
+          )}
+        </div>
+        <div className='container'>
+          <h2>Select a Continent</h2>
+          {/* <div className="card-container">
                 {countries.map((countryData, index) => (
                   <Card key={index} country={countryData.country} facts={countryData.facts} dish={countryData.dish} />
                 ))}
               </div> */}
-            </div>
-          </div>
-      </>
+        </div>
+      </div>
+    </>
   );
 }
 
