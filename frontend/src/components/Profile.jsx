@@ -8,7 +8,7 @@ const Profile = () => {
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        axios.get('http://localhost:3000/users')
+        axios.get('http://localhost:3000/profile')
         .then(res => {
             setUser(res.data);
         })
