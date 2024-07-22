@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-// import Cards from './components/Card';
 import Navbar from './components/Navbar';
 // import ReviewPage from './components/ReviewDish'; // Ensure this import is correct
 import Login from './components/Login';
 import SignUp from './components/signUp';
+// import Cards from './components/Card'
 import './App.css';
 
 function App() {
