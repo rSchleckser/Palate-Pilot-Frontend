@@ -17,6 +17,20 @@ function App() {
         <Route path='/auth/login' element={<Login />} />
         <Route path='/reviews' element={<Review />} />
       </Routes>
+
+      <div>
+        {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
+              CLICK HERE!
+            </button> */}
+
+        <div>
+          {data.length > 0 ? (
+            <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
+          ) : (
+            <p>Loading data...</p>
+          )}
+        </div>
+      </div>
     </>
   );
 }
