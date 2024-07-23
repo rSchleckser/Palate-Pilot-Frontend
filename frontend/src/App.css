@@ -1,3 +1,5 @@
+/* Existing styles */
+
 * {
     text-align: center;
     box-sizing: border-box;
@@ -57,6 +59,38 @@ main {
 }
 
 #root {
-  margin: 0;
-  text-align: center;
+    margin: 0;
+    text-align: center;
+}
+
+/* Home component */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.home-title {
+    margin-top: 20rem;
+}
+
+.home-content {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.home-text {
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+}
+
+.home-text p {
+    margin: 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
 }
