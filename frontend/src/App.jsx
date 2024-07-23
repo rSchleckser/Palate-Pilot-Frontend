@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom';
-=======
-import { Route, Routes} from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Home from './components/Home';
->>>>>>> fbcb7471328c3434fba29f9d46b0dab9fea94ecc
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
-<<<<<<< HEAD
 import SignUp from './components/signUp';
 import Review from './components/Review';
 // import Cards from './components/Card'
@@ -18,56 +11,6 @@ function App() {
   // const handleClick = () => {
   //   console.log('Button has been clicked!');
   // };
-=======
-import SignUp from './components/signUp'
-import Review from './components/Review';
-import * as palatePilotService from './services/palatePilotService';
-import './App.css';
-
-function App() {
-
-  const [food, setFood] = useState([]);
-
-  const fetchFoodData = async (food) => {
-    const data = await palatePilotService.getData(food);
-    const newFoodState = data.results.map(food => {
-      return(
-        name: food.name,
-        description: food.description
-        recipeLink: food.recipeLink
-        image: food.image
-        reviews: food.reviews
-      )
-    });
-    setFood(newFoodState);
-  };
-
-  const foods = [{
-    name: 'Butter Chicken',
-    recipeLink: 'https://www.example.com/butter-chicken',
-    description: 'A rich and creamy dish with a blend of spices.',
-    image: '/images/butter-chicken.jpg',
-    country: 'India',
-    reviews: []
-  },
-  {
-    name: 'Peking Duck',
-    recipeLink: 'https://www.example.com/peking-duck',
-    description: 'A famous duck dish known for its crispy skin.',
-    image: '/images/peking-duck.jpg',
-    country: '',
-    reviews: []
-  },
-  {
-    name: 'Sushi',
-    recipeLink: 'https://www.example.com/sushi',
-    description: 'A traditional Japanese dish with vinegared rice.',
-    image: '/images/sushi.jpg',
-    country: '',
-    reviews: []
-  }
-]
->>>>>>> fbcb7471328c3434fba29f9d46b0dab9fea94ecc
 
   return (
     <>
@@ -84,7 +27,6 @@ function App() {
               CLICK HERE!
             </button> */}
 
-<<<<<<< HEAD
         {/* <div className='container'> */}
         {/* <h2>Select a Continent</h2> */}
         {/* <div className="card-container">
@@ -93,15 +35,6 @@ function App() {
                 ))}
               </div> */}
         {/* </div> */}
-=======
-        <div>
-          {data.length > 0 ? (
-            <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
-          ) : (
-            <p>Loading data...</p>
-          )}
-        </div>
->>>>>>> fbcb7471328c3434fba29f9d46b0dab9fea94ecc
       </div>
     </>
   );

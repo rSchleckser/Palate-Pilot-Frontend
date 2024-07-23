@@ -43,10 +43,15 @@ const SignUp = () => {
     } catch (error) {
       if (error.response && error.response.data.errors) {
         const errorMessages = error.response.data.errors.reduce((acc, err) => {
-          acc[err.param] = err.msg;
-          console.log(acc);
+          if (err.param === undefined) {
+            acc[err.path] = err.msg;
+          } else {
+            acc[err.param] = err.msg;
+          }
           return acc;
         }, {});
+
+        console.log('Extracted error messages:', errorMessages);
         setErrors(errorMessages);
       } else {
         console.error('Signup error:', error);
@@ -89,9 +94,9 @@ const SignUp = () => {
                     required
                   />
                   {errors.username && (
-                    <Form.Control.Feedback type='invalid'>
+                    <Form.Text className='text-danger'>
                       {errors.username}
-                    </Form.Control.Feedback>
+                    </Form.Text>
                   )}
                 </Form.Group>
                 <Form.Group controlId='email' className='mt-3'>
@@ -106,9 +111,9 @@ const SignUp = () => {
                     required
                   />
                   {errors.email && (
-                    <Form.Control.Feedback type='invalid'>
+                    <Form.Text className='text-danger'>
                       {errors.email}
-                    </Form.Control.Feedback>
+                    </Form.Text>
                   )}
                 </Form.Group>
                 <Form.Group controlId='password' className='mt-3'>
@@ -123,9 +128,9 @@ const SignUp = () => {
                     required
                   />
                   {errors.password && (
-                    <Form.Control.Feedback type='invalid'>
+                    <Form.Text className='text-danger'>
                       {errors.password}
-                    </Form.Control.Feedback>
+                    </Form.Text>
                   )}
                 </Form.Group>
                 <Button
