@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import { Route, Routes } from 'react-router-dom';
-=======
-import { Route, Routes} from 'react-router-dom';
-import Home from './components/Home';
->>>>>>> 76edb98d6f3af83cd1a66b26ce68c6c288a477f2
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 <<<<<<< HEAD
