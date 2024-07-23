@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+//import Navbar from "./Navbar";
 // import Card from "./Card";
 // import Favorites from "./Favorites";
 
@@ -7,7 +7,7 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar />
+            <h1>Welcome to Palate Pilot!</h1>
             {/* <Favorites />
             <Card /> */}
         </div>
