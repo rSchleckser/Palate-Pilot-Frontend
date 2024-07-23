@@ -1,41 +1,24 @@
-//import Navbar from "./Navbar";
-// import Card from "./Card";
-// import Favorites from "./Favorites";
-import { useNavigate } from 'react-router-dom';
-
+import { LinkContainer } from 'react-router-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const Home = () => {
-
-    const navigate = useNavigate();
-
-    const handleLoginClick = () => {
-        navigate('/auth/login');
-    };
-
-    const handleSignupClick = () => {
-        navigate('/auth/signup');
-    };
 
     return (
         <div>
             <h1>Welcome to Palate Pilot!</h1>
             {/* <Favorites />
             <Card /> */}
-
+            <h5>Palate-Pilot is a web application that allows users to explore different countries and their popular foods. Users can create accounts to add their favorite foods, each with an image, description, and other relevant information. This app aims to provide a comprehensive platform for food enthusiasts to discover, share, and learn about culinary delights from around the world.</h5>
             <div>
-                <button className="login-button" onClick={handleLoginClick}>
-                    Login here
-                </button>
-            </div>
-
-            <div>
-                <button className="signup-button" onClick={handleSignupClick}>
-                    Signup here
-                </button>
+            <LinkContainer to="/auth/login">
+              <Button variant="light" className="me-2">Login</Button>
+            </LinkContainer>
+            <LinkContainer to="/auth/signup">
+              <Button variant="light">Sign up</Button>
+            </LinkContainer>
             </div>
 
         </div>
-
 
     );
 }
