@@ -1,12 +1,30 @@
 import { Route, Routes} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/signUp'
 import Review from './components/Review';
+import * as palatePilotService from './services/palatePilotService';
 import './App.css';
 
 function App() {
+
+  const [food, setFood] = useState([]);
+
+  const fetchFoodData = async (food) => {
+    const data = await palatePilotService.getData(food);
+    const newFoodState = data.results.map(food => {
+      return(
+        name: food.name,
+        description: food.description
+        recipeLink: food.recipeLink
+        image: food.image
+        reviews: food.reviews
+      )
+    });
+    setFood(newFoodState);
+  };
 
   const foods = [{
     name: 'Butter Chicken',
