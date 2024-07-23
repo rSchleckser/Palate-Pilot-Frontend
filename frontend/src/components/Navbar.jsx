@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import React from 'react';
+=======
+>>>>>>> 5a80e1d254c90fa56a6bb38080695f8adce2534f
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../images/logo.png';
 
@@ -14,7 +18,7 @@ const MyNavbar = () => {
               className='d-inline-block align-top'
               alt='Logo'
             />
-            Navbar
+            Palate Pilot
           </Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
