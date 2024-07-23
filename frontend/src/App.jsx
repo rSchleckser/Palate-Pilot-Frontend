@@ -1,22 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import { useState, useEffect } from 'react';
 import Home from './components/Home';
->>>>>>> 4ff9bd8da0f1759d7926d46bb0db3308846c1192
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/signUp';
 import Review from './components/Review';
-<<<<<<< HEAD
-// import Cards from './components/Card'
-import './App.css';
-
-function App() {
-  // const handleClick = () => {
-  //   console.log('Button has been clicked!');
-  // };
-=======
 import * as palatePilotService from './services/palatePilotService';
 import './App.css';
 
@@ -67,7 +55,6 @@ function App() {
       reviews: [],
     },
   ];
->>>>>>> 4ff9bd8da0f1759d7926d46bb0db3308846c1192
 
   return (
     <>
@@ -84,16 +71,6 @@ function App() {
           CLICK HERE!
         </button> */}
 
-<<<<<<< HEAD
-        {/* <div className='container'> */}
-        {/* <h2>Select a Continent</h2> */}
-        {/* <div className="card-container">
-                {countries.map((countryData, index) => (
-                  <Card key={index} country={countryData.country} facts={countryData.facts} dish={countryData.dish} />
-                ))}
-              </div> */}
-        {/* </div> */}
-=======
         <div>
           {food.length > 0 ? (
             <div>{JSON.stringify(food)}</div> // Displaying food data, adjust as needed
@@ -101,7 +78,6 @@ function App() {
             <p>Loading data...</p>
           )}
         </div>
->>>>>>> 4ff9bd8da0f1759d7926d46bb0db3308846c1192
       </div>
     </>
   );
