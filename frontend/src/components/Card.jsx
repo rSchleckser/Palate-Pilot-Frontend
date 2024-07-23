@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 
+
 const PalatePilotCard = (props) => {
   return(
     <CardGroup>
