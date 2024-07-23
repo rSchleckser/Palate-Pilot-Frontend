@@ -15,7 +15,7 @@ const MyNavbar = () => {
               className="d-inline-block align-top"
               alt="Logo"
             />
-            Navbar
+            Palate Pilot
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>

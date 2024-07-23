@@ -8,8 +8,10 @@ const Home = () => {
             <h1>Welcome to Palate Pilot!</h1>
             {/* <Favorites />
             <Card /> */}
-            <h5>Palate-Pilot is a web application that allows users to explore different countries and their popular foods. Users can create accounts to add their favorite foods, each with an image, description, and other relevant information. This app aims to provide a comprehensive platform for food enthusiasts to discover, share, and learn about culinary delights from around the world.</h5>
+            <h5>Explore popular foods from different countries and save your favorites with images and descriptions. 
+                Create an account to share and learn about culinary delights from around the globe!</h5>
             <div>
+                
             <LinkContainer to="/auth/login">
               <Button variant="light" className="me-2">Login</Button>
             </LinkContainer>
