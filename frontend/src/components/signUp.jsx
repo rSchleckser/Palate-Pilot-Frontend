@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = () => {
@@ -95,6 +95,10 @@ const SignUp = () => {
         </div>
         <button type='submit' className='btn btn-primary' disabled={loading}>
           {loading ? 'Signing up...' : 'Signup'}
+        </button>
+
+        <button>
+          <Link to={'/'}>Home</Link>
         </button>
       </form>
     </div>

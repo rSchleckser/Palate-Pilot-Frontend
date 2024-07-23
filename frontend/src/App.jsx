@@ -1,8 +1,23 @@
+<<<<<<< HEAD
+import { Route, Routes } from 'react-router-dom';
+=======
 import { Route, Routes} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home';
+>>>>>>> 76edb98d6f3af83cd1a66b26ce68c6c288a477f2
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+<<<<<<< HEAD
+import SignUp from './components/signUp';
+import Review from './components/Review';
+// import Cards from './components/Card'
+import './App.css';
+
+function App() {
+  // const handleClick = () => {
+  //   console.log('Button has been clicked!');
+  // };
+=======
 import SignUp from './components/signUp'
 import Review from './components/Review';
 import * as palatePilotService from './services/palatePilotService';
@@ -51,6 +66,7 @@ function App() {
     reviews: []
   }
 ]
+>>>>>>> 76edb98d6f3af83cd1a66b26ce68c6c288a477f2
 
   return (
     <>
@@ -67,12 +83,22 @@ function App() {
               CLICK HERE!
             </button> */}
 
+<<<<<<< HEAD
+        <div className='container'>
+          <h2>Select a Continent</h2>
+          {/* <div className="card-container">
+                {countries.map((countryData, index) => (
+                  <Card key={index} country={countryData.country} facts={countryData.facts} dish={countryData.dish} />
+                ))}
+              </div> */}
+=======
         <div>
           {data.length > 0 ? (
             <div>{JSON.stringify(data)}</div> // Displaying data, adjust as needed
           ) : (
             <p>Loading data...</p>
           )}
+>>>>>>> 76edb98d6f3af83cd1a66b26ce68c6c288a477f2
         </div>
       </div>
     </>
