@@ -1,43 +1,18 @@
-// src/components/Card.jsx
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
-
-const Cards = () => {
-  const [card, setCard] = useState([]);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/cards')
-    .then(res => {
-      setCard(res.data);
-    })
-    .catch(err => {
-      console.log('error: ', err)
-    })
-  });
-
+const PalatePilotCard = (props) => {
   return(
-    <>
+    <CardGroup>
+      <Card>
+        <Card.Body>
+          <Card.Header>{props.country.name}</Card.Header>
+          <Card.Text>Foods: {props.food.name}</Card.Text>
+          <Card.Text>Reviews: {props.reviews.comment}</Card.Text>
+        </Card.Body>
+      </Card>
+    </CardGroup>
+  );
+};
 
-      {card.map(card => {
-        return(
-          <>
-          <div key={card.id}>
-            <h1>{card.country}</h1>
-          </div>
-          <div>
-            <h3>{card.foods}</h3>
-          </div>
-          <div>
-            <h3>{card.reviews}</h3>
-          </div>
-          </>
-        )
-      })}
-
-    </>
-  )
-
-}
-
-export default Cards;
+export default PalatePilotCard;

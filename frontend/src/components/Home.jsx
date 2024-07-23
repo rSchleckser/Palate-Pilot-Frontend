@@ -1,6 +1,7 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'react-bootstrap';
 import '../App.css';
+import PalatePilotCard from './Card';
 
 const Home = () => {
   return (
@@ -19,6 +20,9 @@ const Home = () => {
             <Button variant="light">Sign up</Button>
           </LinkContainer>
         </div>
+      </div>
+      <div>
+        <PalatePilotCard />
       </div>
     </div>
   );
