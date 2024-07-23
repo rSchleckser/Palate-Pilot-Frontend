@@ -8,6 +8,32 @@ import './App.css';
 
 function App() {
 
+  const foods = [{
+    name: 'Butter Chicken',
+    recipeLink: 'https://www.example.com/butter-chicken',
+    description: 'A rich and creamy dish with a blend of spices.',
+    image: '/images/butter-chicken.jpg',
+    country: 'India',
+    reviews: []
+  },
+  {
+    name: 'Peking Duck',
+    recipeLink: 'https://www.example.com/peking-duck',
+    description: 'A famous duck dish known for its crispy skin.',
+    image: '/images/peking-duck.jpg',
+    country: '',
+    reviews: []
+  },
+  {
+    name: 'Sushi',
+    recipeLink: 'https://www.example.com/sushi',
+    description: 'A traditional Japanese dish with vinegared rice.',
+    image: '/images/sushi.jpg',
+    country: '',
+    reviews: []
+  }
+]
+
   return (
     <>
       <Navbar />
