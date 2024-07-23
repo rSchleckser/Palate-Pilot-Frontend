@@ -1,36 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { CgProfile } from "react-icons/cg";
-import axios from 'axios';
+import React from 'react';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../images/logo.png';
-import '../css/Navbar.css';
 
-const Navbar = () => {
-  const [navbarData, setNavbarData] = useState(null);
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/Navbar')
-      .then(res => {
-        setNavbarData(res.data);
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      });
-  }, []);
-
+const MyNavbar = () => {
   return (
     <>
-      <div>
-        <img src={logo} height={300} width={150} alt="Logo"/>
-      </div>
-      <div>
-        <h1>Welcome to PalatePilot!</h1>
-      </div>
-      <div id="userIcon">
-        <CgProfile />
-        <h6>Username</h6>
-      </div>
+      <Navbar bg='light' data-bs-theme='light'>
+        <Container>
+          <Navbar.Brand href='/'>
+            <img
+              src={logo}
+              width='30'
+              height='30'
+              className='d-inline-block align-top'
+              alt='Logo'
+            />
+            Palate Pilot
+          </Navbar.Brand>
+          <Nav className='me-auto'>
+            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link href='/'>Profile</Nav.Link>
+            <Nav.Link href='/auth/login'>Login</Nav.Link>
+            <Nav.Link href='/auth/signup'>Sign up</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </>
   );
 };
 
-export default Navbar;
+export default MyNavbar;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 const Card = ({ country, facts, dish }) => {
@@ -17,3 +18,48 @@ const Card = ({ country, facts, dish }) => {
 
 export default Card;
 
+=======
+// src/components/Card.jsx
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+
+const Cards = () => {
+  const [card, setCard] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/cards')
+    .then(res => {
+      setCard(res.data);
+    })
+    .catch(err => {
+      console.log('error: ', err)
+    })
+  });
+
+  return(
+    <>
+
+      {card.map(card => {
+        return(
+          <>
+          <div key={card.id}>
+            <h1>{card.country}</h1>
+          </div>
+          <div>
+            <h3>{card.foods}</h3>
+          </div>
+          <div>
+            <h3>{card.reviews}</h3>
+          </div>
+          </>
+        )
+      })}
+
+    </>
+  )
+
+}
+
+export default Cards;
+>>>>>>> 3c16609a1df00c03bcca540b088192610e3e0d45

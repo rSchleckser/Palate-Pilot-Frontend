@@ -1,10 +1,96 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Existing styles */
+
+* {
+    text-align: center;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #A0DEFF !important;
+    margin: 0;
+    padding: 0;
+    background-color: #A0DEFF !important;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #CAF4FF;
+    color: #5AB2FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar img {
+    margin-right: 25px;
+}
+
+#userIcon {
+    margin-left: 25px;
+}
+
+#navLinks {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#navLinks a {
+    background-color: #CAF4FF;
+    color: #5AB2FF;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#navLinks a:hover {
+    background-color: #5AB2FF;
+    color: #CAF4FF;
+}
+
+main {
+    padding-top: 70px;
+}
+
+#root {
+    margin: 0;
+    text-align: center;
+}
+
+/* Home component */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.home-title {
+    margin-top: 20rem;
+}
+
+.home-content {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.home-text {
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+}
+
+.home-text p {
+    margin: 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
 }
