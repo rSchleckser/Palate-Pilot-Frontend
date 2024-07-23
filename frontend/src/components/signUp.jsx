@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -39,6 +44,7 @@ const SignUp = () => {
       if (error.response && error.response.data.errors) {
         const errorMessages = error.response.data.errors.reduce((acc, err) => {
           acc[err.param] = err.msg;
+          console.log(acc);
           return acc;
         }, {});
         setErrors(errorMessages);
@@ -51,57 +57,90 @@ const SignUp = () => {
   };
 
   return (
-    <div className='signup-container'>
-      <h2>Signup Here!</h2>
-      <form onSubmit={handleSubmit}>
-        <div className='form-group'>
-          <label>Username:</label>
-          <input
-            type='text'
-            value={username}
-            onChange={handleUsernameChange}
-            className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-            required
-          />
-          {errors.username && (
-            <div className='invalid-feedback'>{errors.username}</div>
-          )}
-        </div>
-        <div className='form-group'>
-          <label>Email:</label>
-          <input
-            type='email'
-            value={email}
-            onChange={handleEmailChange}
-            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-            required
-          />
-          {errors.email && (
-            <div className='invalid-feedback'>{errors.email}</div>
-          )}
-        </div>
-        <div className='form-group'>
-          <label>Password:</label>
-          <input
-            type='password'
-            value={password}
-            onChange={handlePasswordChange}
-            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-            required
-          />
-          {errors.password && (
-            <div className='invalid-feedback'>{errors.password}</div>
-          )}
-        </div>
-        <button type='submit' className='btn btn-primary' disabled={loading}>
-          {loading ? 'Signing up...' : 'Signup'}
-        </button>
+    <>
+      <Container
+        fluid
+        className='d-flex align-items-center justify-content-center vh-100'
+      >
+        <Row className='justify-content-center w-100'>
+          <h1 style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            Create Your Palate Pilot Account
+          </h1>
 
-        <button>
-          <Link to={'/'}>Home</Link>
-        </button>
-      </form>
-    </div>
+          <Col md={6} lg={4}>
+            <div
+              className='signup-container p-4'
+              style={{
+                boxShadow: '2px 2px 2px 2px black',
+                backgroundColor: '#F8F9FA',
+              }}
+            >
+              <h2 className='text-center mb-4'>Sign Up</h2>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId='username'>
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type='text'
+                    name='username'
+                    value={username}
+                    style={{ backgroundColor: '#E9ECEF' }}
+                    onChange={handleUsernameChange}
+                    className={errors.username ? 'is-invalid' : ''}
+                    required
+                  />
+                  {errors.username && (
+                    <Form.Control.Feedback type='invalid'>
+                      {errors.username}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
+                <Form.Group controlId='email' className='mt-3'>
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type='email'
+                    name='email'
+                    value={email}
+                    style={{ backgroundColor: '#E9ECEF' }}
+                    onChange={handleEmailChange}
+                    className={errors.email ? 'is-invalid' : ''}
+                    required
+                  />
+                  {errors.email && (
+                    <Form.Control.Feedback type='invalid'>
+                      {errors.email}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
+                <Form.Group controlId='password' className='mt-3'>
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type='password'
+                    name='password'
+                    value={password}
+                    style={{ backgroundColor: '#E9ECEF' }}
+                    onChange={handlePasswordChange}
+                    className={errors.password ? 'is-invalid' : ''}
+                    required
+                  />
+                  {errors.password && (
+                    <Form.Control.Feedback type='invalid'>
+                      {errors.password}
+                    </Form.Control.Feedback>
+                  )}
+                </Form.Group>
+                <Button
+                  type='submit'
+                  className='btn btn-primary w-100 mt-4'
+                  disabled={loading}
+                >
+                  {loading ? 'Signing up...' : 'Signup'}
+                </Button>
+              </Form>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 
