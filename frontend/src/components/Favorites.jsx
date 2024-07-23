@@ -7,7 +7,7 @@ const Favorites = () => {
     const [favorite, setFavorites] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/favorites')
+        axios.get('/favorites')
         .then(res => {
             setFavorites(res.data);
         })
