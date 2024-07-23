@@ -29,6 +29,43 @@ function App() {
     fetchFoodData();
   }, []);
 
+  const [country, setCountry] = useState([]);
+
+  const fetchCountryData = async () => {
+    const data = await palatePilotService.getData();
+    const newCountryState = data.results.map((country) => {
+    return {
+      name: country.name,
+      continent: country.continent,
+      foods: country.foods
+    };
+    });
+    setCountry(newCountryState);
+  };
+
+  useEffect(() => {
+    fetchCountryData();
+  }, []);
+
+  const [review, setReview] = useState([]);
+
+  const fetchReviewData = async () => {
+    const data = await palatePilotService.getData();
+    const newReviewState = data.results.map((review) => {
+    return {
+      user: 'userID',
+      food: 'foodID',
+      rating: review.rating,
+      comment: review.comment
+    };
+    });
+    setReview(newReviewState);
+  };
+
+  useEffect(() => {
+    fetchReviewData();
+  }, []);
+
   const foods = [
     {
       name: 'Butter Chicken',
