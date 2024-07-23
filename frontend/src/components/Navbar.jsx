@@ -1,22 +1,9 @@
 import { CgProfile } from "react-icons/cg";
 import logo from '../images/logo.png';
 import '../css/Navbar.css'
-import axios from "axios";
-import { useEffect } from "react";
-
-
+import Cards from "./Card";
 
 const Navbar = () => {
-
-    useEffect(() => {
-        axios.get('http://localhost:3000/favorites')
-        .then(res => {
-            setFavorites(res.data);
-        })
-        .catch(err => {
-            console.log('error: ', err);
-        })
-    });
     
     return(
         <>
@@ -30,6 +17,9 @@ const Navbar = () => {
             <CgProfile />
             <h6>Username</h6>
         </div>
+
+        <Cards />
+
         </>
     )
 }

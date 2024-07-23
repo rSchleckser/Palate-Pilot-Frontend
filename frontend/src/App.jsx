@@ -41,14 +41,6 @@ function App() {
             <p>Loading data...</p>
           )}
         </div>
-        <div className='container'>
-          <h2>Select a Continent</h2>
-          {/* <div className="card-container">
-                {countries.map((countryData, index) => (
-                  <Card key={index} country={countryData.country} facts={countryData.facts} dish={countryData.dish} />
-                ))}
-              </div> */}
-        </div>
       </div>
     </>
   );
