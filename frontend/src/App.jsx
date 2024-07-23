@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
@@ -7,15 +7,6 @@ import Review from './components/Review';
 import './App.css';
 
 function App() {
-  const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    navigate('/auth/login');
-  };
-
-  const handleSignupClick = () => {
-    navigate('/auth/signup');
-  };
 
   return (
     <>
@@ -26,18 +17,6 @@ function App() {
         <Route path='/auth/login' element={<Login />} />
         <Route path='/reviews' element={<Review />} />
       </Routes>
-
-      <div>
-        <button className="login-button" onClick={handleLoginClick}>
-          Login here
-        </button>
-      </div>
-
-      <div>
-        <button className="signup-button" onClick={handleSignupClick}>
-          Signup here
-        </button>
-      </div>
     </>
   );
 }
