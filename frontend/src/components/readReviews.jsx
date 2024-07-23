@@ -14,7 +14,7 @@ const ReadReviews = ({ reviews }) => {
 });
   return (
     <div className="container mt-4">
-      <h2>Reviews</h2>
+      <h2>Reviews of dishes</h2>
       <div className="list-group">
         {reviews.map((review, index) => (
           <div key={index} className="list-group-item">
