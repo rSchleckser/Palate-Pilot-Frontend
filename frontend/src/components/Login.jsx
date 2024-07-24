@@ -29,7 +29,7 @@ const Login = () => {
     try {
       const res = await axios.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       if (err.response && err.response.data.errors) {
         const errorMessages = err.response.data.errors.reduce((acc, error) => {
