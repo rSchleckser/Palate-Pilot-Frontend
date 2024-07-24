@@ -11,7 +11,7 @@ const GetData = (props) => {
 
   const grabFoodData = async () => {
     try {
-      const response = await axios.get('/food', {
+      const response = await axios.get('/api', {
         food
       });
 
