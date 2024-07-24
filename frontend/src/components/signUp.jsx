@@ -39,7 +39,7 @@ const SignUp = () => {
         password,
       });
       localStorage.setItem('token', response.data.token);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       if (error.response && error.response.data.errors) {
         const errorMessages = error.response.data.errors.reduce((acc, err) => {

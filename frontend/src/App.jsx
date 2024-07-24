@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/signUp';
 import Review from './components/Review';
+import Meals from './components/Meals';
 import * as palatePilotService from './services/palatePilotService';
 import './App.css';
 
@@ -34,11 +35,11 @@ function App() {
   const fetchCountryData = async () => {
     const data = await palatePilotService.getData();
     const newCountryState = data.results.map((country) => {
-    return {
-      name: country.name,
-      continent: country.continent,
-      foods: country.foods
-    };
+      return {
+        name: country.name,
+        continent: country.continent,
+        foods: country.foods,
+      };
     });
     setCountry(newCountryState);
   };
@@ -52,12 +53,12 @@ function App() {
   const fetchReviewData = async () => {
     const data = await palatePilotService.getData();
     const newReviewState = data.results.map((review) => {
-    return {
-      user: 'userID',
-      food: 'foodID',
-      rating: review.rating,
-      comment: review.comment
-    };
+      return {
+        user: 'userID',
+        food: 'foodID',
+        rating: review.rating,
+        comment: review.comment,
+      };
     });
     setReview(newReviewState);
   };
@@ -97,10 +98,11 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth/signup" element={<SignUp />} />
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/reviews" element={<Review />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/auth/signup' element={<SignUp />} />
+        <Route path='/auth/login' element={<Login />} />
+        <Route path='/reviews' element={<Review />} />
+        <Route path='/foods' element={<Meals />} />
       </Routes>
 
       <div>
