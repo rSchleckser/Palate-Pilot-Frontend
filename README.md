@@ -93,4 +93,3 @@ Here is our first wireframe for the homepage of our app!
 
 - **Styling**
   - CSS-in-JS (Styled Components) or CSS frameworks like Bootstrap or Semantic UI.
-
