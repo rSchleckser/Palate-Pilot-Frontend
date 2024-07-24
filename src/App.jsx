@@ -5,6 +5,7 @@ import Login from './components/Login';
 import SignUp from './components/signUp';
 import Review from './components/Review';
 import Meals from './components/Meals';
+import * as palatePilotService from './services/palatePilotService';
 import './App.css';
 
 function App() {
