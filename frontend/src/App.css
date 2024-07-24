@@ -94,3 +94,9 @@ main {
     display: flex;
     justify-content: center;
 }
+
+/* Profile component */
+
+.profile-title {
+    margin-top: 10rem;
+}
