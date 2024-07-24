@@ -7,6 +7,7 @@ const Meals = () => {
   const [foods, setFoods] = useState([]);
   const [error, setError] = useState(null);
 
+<<<<<<< HEAD:frontend/src/components/Card.jsx
     const fetchData = async () => {
       try {
         await axios.get('/food').then (res => {
@@ -47,6 +48,53 @@ const Meals = () => {
         </>
 
   );
+=======
+  const grabFoodData = async () => {
+    try {
+      const response = await axios.get('/food', {
+        food,
+      });
+      setFood(response.data);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  const grabCountryData = async () => {
+    try {
+      const response = await axios.get('/country', {
+        country,
+      });
+      setCountry(response.data);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  const grabReviewData = async () => {
+    try {
+      const response = await axios.get('/review', {
+        review,
+      });
+      setReview(response.data);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+
+  return (
+    <CardGroup>
+      <Card>
+        <Card.Body>
+          <Card.Header>{grabCountryData([])}</Card.Header>
+          <Card.Text>Foods: {grabFoodData([])}</Card.Text>
+          <Card.Text>Reviews: {grabReviewData([])}</Card.Text>
+        </Card.Body>
+      </Card>
+    </CardGroup>
+  );
+};
+>>>>>>> f6146358925574e8c88e8b7f41e7b3532f74355e:src/components/Card.jsx
 
 };
 
