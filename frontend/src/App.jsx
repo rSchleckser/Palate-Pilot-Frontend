@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
@@ -109,14 +108,6 @@ function App() {
         {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
           CLICK HERE!
         </button> */}
-
-        <div>
-          {food.length > 0 ? (
-            <div>{JSON.stringify(food)}</div> // Displaying food data, adjust as needed
-          ) : (
-            <p>Loading data...</p>
-          )}
-        </div>
       </div>
     </>
   );

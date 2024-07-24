@@ -1,7 +1,7 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'react-bootstrap';
 import '../App.css';
-import PalatePilotCard from './Card';
+import GetData from './Card';
 
 const Home = (props) => {
   return (
