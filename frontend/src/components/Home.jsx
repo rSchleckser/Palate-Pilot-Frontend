@@ -1,7 +1,7 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'react-bootstrap';
 import '../App.css';
-import GetData from './Card';
+import PalatePilotCard from './Card';
 
 const Home = (props) => {
   return (
@@ -30,7 +30,7 @@ const Home = (props) => {
         </div>
       </div>
       <div>
-        <PalatePilotCard foods={props.foods} />
+        <PalatePilotCard foods={props.food} />
       </div>
     </div>
   );
