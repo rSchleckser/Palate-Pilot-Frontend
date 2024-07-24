@@ -30,11 +30,7 @@ const Home = (props) => {
         </div>
       </div>
       <div>
-<<<<<<< HEAD:frontend/src/components/Home.jsx
         <GetData />
-=======
-        <PalatePilotCard foods={props.food} />
->>>>>>> f6146358925574e8c88e8b7f41e7b3532f74355e:src/components/Home.jsx
       </div>
     </div>
   );
