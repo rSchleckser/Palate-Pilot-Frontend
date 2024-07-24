@@ -19,7 +19,7 @@ const MyNavbar = () => {
           </Navbar.Brand>
           <Nav className='me-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/'>Profile</Nav.Link>
+            <Nav.Link href='/profile'>Profile</Nav.Link>
             <Nav.Link href='/auth/login'>Login</Nav.Link>
             <Nav.Link href='/auth/signup'>Sign up</Nav.Link>
           </Nav>
