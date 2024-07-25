@@ -8,92 +8,93 @@ import SignUp from './components/signUp';
 import Review from './components/Review';
 import ProfilePage from './components/ProfilePage';
 import * as palatePilotService from './services/palatePilotService';
+import Card from './components/Card';
 import './App.css';
 
 function App() {
-  const [food, setFood] = useState([]);
+  // const [food, setFood] = useState([]);
 
-  const fetchFoodData = async () => {
-    const data = await palatePilotService.getData();
-    const newFoodState = data.results.map((food) => {
-      return {
-        name: food.name,
-        description: food.description,
-        recipeLink: food.recipeLink,
-        image: food.image,
-        reviews: food.reviews,
-      };
-    });
-    setFood(newFoodState);
-  };
+  // const fetchFoodData = async () => {
+  //   const data = await palatePilotService.getData();
+  //   const newFoodState = data.results.map((food) => {
+  //     return {
+  //       name: food.name,
+  //       description: food.description,
+  //       recipeLink: food.recipeLink,
+  //       image: food.image,
+  //       reviews: food.reviews,
+  //     };
+  //   });
+  //   setFood(newFoodState);
+  // };
 
-  useEffect(() => {
-    fetchFoodData();
-  }, []);
+  // useEffect(() => {
+  //   fetchFoodData();
+  // }, []);
 
-  const [country, setCountry] = useState([]);
+  // const [country, setCountry] = useState([]);
 
-  const fetchCountryData = async () => {
-    const data = await palatePilotService.getData();
-    const newCountryState = data.results.map((country) => {
-      return {
-        name: country.name,
-        continent: country.continent,
-        foods: country.foods,
-      };
-    });
-    setCountry(newCountryState);
-  };
+  // const fetchCountryData = async () => {
+  //   const data = await palatePilotService.getData();
+  //   const newCountryState = data.results.map((country) => {
+  //     return {
+  //       name: country.name,
+  //       continent: country.continent,
+  //       foods: country.foods,
+  //     };
+  //   });
+  //   setCountry(newCountryState);
+  // };
 
-  useEffect(() => {
-    fetchCountryData();
-  }, []);
+  // useEffect(() => {
+  //   fetchCountryData();
+  // }, []);
 
-  const [review, setReview] = useState([]);
+  // const [review, setReview] = useState([]);
 
-  const fetchReviewData = async () => {
-    const data = await palatePilotService.getData();
-    const newReviewState = data.results.map((review) => {
-      return {
-        user: 'userID',
-        food: 'foodID',
-        rating: review.rating,
-        comment: review.comment,
-      };
-    });
-    setReview(newReviewState);
-  };
+  // const fetchReviewData = async () => {
+  //   const data = await palatePilotService.getData();
+  //   const newReviewState = data.results.map((review) => {
+  //     return {
+  //       user: 'userID',
+  //       food: 'foodID',
+  //       rating: review.rating,
+  //       comment: review.comment,
+  //     };
+  //   });
+  //   setReview(newReviewState);
+  // };
 
-  useEffect(() => {
-    fetchReviewData();
-  }, []);
+  // useEffect(() => {
+  //   fetchReviewData();
+  // }, []);
 
-  const foods = [
-    {
-      name: 'Butter Chicken',
-      recipeLink: 'https://www.example.com/butter-chicken',
-      description: 'A rich and creamy dish with a blend of spices.',
-      image: '/images/butter-chicken.jpg',
-      country: 'India',
-      reviews: [],
-    },
-    {
-      name: 'Peking Duck',
-      recipeLink: 'https://www.example.com/peking-duck',
-      description: 'A famous duck dish known for its crispy skin.',
-      image: '/images/peking-duck.jpg',
-      country: '',
-      reviews: [],
-    },
-    {
-      name: 'Sushi',
-      recipeLink: 'https://www.example.com/sushi',
-      description: 'A traditional Japanese dish with vinegared rice.',
-      image: '/images/sushi.jpg',
-      country: '',
-      reviews: [],
-    },
-  ];
+  // const foods = [
+  //   {
+  //     name: 'Butter Chicken',
+  //     recipeLink: 'https://www.example.com/butter-chicken',
+  //     description: 'A rich and creamy dish with a blend of spices.',
+  //     image: '/images/butter-chicken.jpg',
+  //     country: 'India',
+  //     reviews: [],
+  //   },
+  //   {
+  //     name: 'Peking Duck',
+  //     recipeLink: 'https://www.example.com/peking-duck',
+  //     description: 'A famous duck dish known for its crispy skin.',
+  //     image: '/images/peking-duck.jpg',
+  //     country: '',
+  //     reviews: [],
+  //   },
+  //   {
+  //     name: 'Sushi',
+  //     recipeLink: 'https://www.example.com/sushi',
+  //     description: 'A traditional Japanese dish with vinegared rice.',
+  //     image: '/images/sushi.jpg',
+  //     country: '',
+  //     reviews: [],
+  //   },
+  // ];
 
   //Sample Data for Profile Page- will update
   const username = 'John Doe';

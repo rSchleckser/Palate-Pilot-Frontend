@@ -1,57 +1,52 @@
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import { useState } from 'react';
+// import Card from 'react-bootstrap/Card';
+// import CardGroup from 'react-bootstrap/CardGroup';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const GetData = () => {
-  const [food, setFood] = useState([]);
-  const [country, setCountry] = useState([]);
-  const [review, setReview] = useState([]);
+const Meals = () => {
+  const [foods, setFoods] = useState([]);
+  const [error, setError] = useState(null);
+    const fetchData = async () => {
+      try {
+        await axios.get('/food').then (res => {
+          console.log(res);
+          setFoods([res.data]) 
+        });
+        
+      } catch (error) {
+        setError(error);
+      }
+    };
+    useEffect(() => {
 
-  const grabFoodData = async () => {
-    try {
-      const response = await axios.get('/food', {
-        food,
-      });
-      setFood(response.data);
-    } catch (error) {
-      console.log('error: ', error);
-    }
-  };
+    fetchData();
+  }, []);
 
-  const grabCountryData = async () => {
-    try {
-      const response = await axios.get('/country', {
-        country,
-      });
-      setCountry(response.data);
-    } catch (error) {
-      console.log('error: ', error);
-    }
-  };
 
-  const grabReviewData = async () => {
-    try {
-      const response = await axios.get('/review', {
-        review,
-      });
-      setReview(response.data);
-    } catch (error) {
-      console.log('error: ', error);
-    }
-  };
+  if (error) return <p>Error: {error}</p>;
 
   return (
-    <CardGroup>
-      <Card>
-        <Card.Body>
-          <Card.Header>{grabCountryData([])}</Card.Header>
-          <Card.Text>Foods: {grabFoodData([])}</Card.Text>
-          <Card.Text>Reviews: {grabReviewData([])}</Card.Text>
-        </Card.Body>
-      </Card>
-    </CardGroup>
+
+    !foods ? error :
+        <>
+            <div>
+              <h1>Food List</h1>
+              <ul>
+                {
+                    foods.map((food) => (
+                      <li key={food}>
+                        <h2>{food.name}</h2>
+                        <p>{food.description}</p>
+                        <p><strong>Country:</strong>{food.country}</p>
+                      </li>
+                    ))
+                }
+              </ul>
+            </div>
+        </>
+
   );
+
 };
 
-export default GetData;
+export default Meals;

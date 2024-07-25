@@ -30,7 +30,7 @@ const Home = (props) => {
         </div>
       </div>
       <div>
-        <PalatePilotCard foods={props.food} />
+        <GetData />
       </div>
     </div>
   );
