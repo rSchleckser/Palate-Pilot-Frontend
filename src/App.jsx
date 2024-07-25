@@ -1,10 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/signUp';
 import Review from './components/Review';
-import Meals from './components/Meals';
+import ProfilePage from './components/ProfilePage';
 import * as palatePilotService from './services/palatePilotService';
 import './App.css';
 
@@ -93,6 +95,15 @@ function App() {
     },
   ];
 
+  //Sample Data for Profile Page- will update
+  const username = 'John Doe';
+  const favorites = ['Pizza', 'Burger', 'Sushi'];
+  const reviews = [
+    'Great food at the local diner.',
+    'Loved the ambiance at the Italian restaurant.',
+    'Would not recommend the new burger place.',
+  ];
+
   return (
     <>
       <Navbar />
@@ -100,8 +111,17 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/auth/signup' element={<SignUp />} />
         <Route path='/auth/login' element={<Login />} />
+        <Route
+          path='/profile'
+          element={
+            <ProfilePage
+              username={username}
+              favorites={favorites}
+              reviews={reviews}
+            />
+          }
+        />
         <Route path='/reviews' element={<Review />} />
-        <Route path='/foods' element={<Meals />} />
       </Routes>
 
       <div>
