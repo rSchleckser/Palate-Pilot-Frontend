@@ -8,6 +8,7 @@ import SignUp from './components/signUp';
 import Review from './components/Review';
 import ProfilePage from './components/ProfilePage';
 import UserReviews from './components/UserReviews';
+import UserFavorites from './components/UserFavorites';
 import * as palatePilotService from './services/palatePilotService';
 import Card from './components/Card';
 import './App.css';
@@ -124,6 +125,7 @@ function App() {
           }
         />
         <Route path='/userreviews' element={<UserReviews />} />
+        <Route path='/userfavorites' element={<UserFavorites />} />
         <Route path='/reviews' element={<Review />} />
       </Routes>
 
