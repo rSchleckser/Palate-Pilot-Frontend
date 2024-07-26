@@ -1,9 +1,9 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Button } from 'react-bootstrap';
 import '../App.css';
-import PalatePilotCard from './Card';
+// import PalatePilotCard from './Card';
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div className='home-container'>
       <h1 className='home-title'>Welcome to Palate Pilot!</h1>
@@ -30,7 +30,7 @@ const Home = (props) => {
         </div>
       </div>
       <div>
-        <GetData />
+        {/* <GetData /> */}
       </div>
     </div>
   );
