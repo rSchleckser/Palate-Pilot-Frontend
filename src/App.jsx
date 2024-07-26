@@ -1,18 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import SignUp from './components/Signup';
 import Login from './components/Login';
-import SignUp from './components/signUp';
-import Review from './components/Review';
 import ProfilePage from './components/ProfilePage';
 import UserReviews from './components/UserReviews';
 import UserFavorites from './components/UserFavorites';
-// import * as palatePilotService from './services/palatePilotService';
-// import Card from './components/Card';
-import './App.css';
+import Meals from './components/Meals';
 
-function App() {
-  //Sample Data for Profile Page- will update
+const App = () => {
   const username = 'John Doe';
   const favorites = ['Pizza', 'Burger', 'Sushi'];
   const reviews = [
@@ -38,12 +34,13 @@ function App() {
             />
           }
         />
+
         <Route path='/userreviews' element={<UserReviews />} />
         <Route path='/userfavorites' element={<UserFavorites />} />
-        <Route path='/reviews' element={<Review />} />
+        <Route path='/foods' element={<Meals />} />
       </Routes>
     </>
   );
-}
+};
 
 export default App;
