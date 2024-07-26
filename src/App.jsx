@@ -42,12 +42,6 @@ function App() {
         <Route path='/userfavorites' element={<UserFavorites />} />
         <Route path='/reviews' element={<Review />} />
       </Routes>
-
-      <div>
-        {/* <button onClick={handleClick} style={{ backgroundColor: '#6499E9', color: '#BEFFF7' }}>
-          CLICK HERE!
-        </button> */}
-      </div>
     </>
   );
 }
