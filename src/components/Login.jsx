@@ -29,6 +29,7 @@ const Login = () => {
     try {
       const res = await axios.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
+      console.log(res.data.token);
       navigate('/profile');
     } catch (err) {
       if (err.response && err.response.data.errors) {
