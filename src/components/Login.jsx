@@ -27,11 +27,9 @@ const Login = () => {
     setErrors({});
 
     try {
-      const res = await axios.post(
-        'https://palate-pilot-backend.onrender.com/auth/login',
-        { email, password }
-      );
+      const res = await axios.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
+      console.log(res.data.token);
       navigate('/profile');
     } catch (err) {
       if (err.response && err.response.data.errors) {
@@ -50,69 +48,73 @@ const Login = () => {
   };
 
   return (
-    <Container
-      fluid
-      className='d-flex align-items-center justify-content-center vh-100'
-    >
-      <Row className='justify-content-center w-100'>
-        <h1 style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          Log In to Your Palate Pilot Account
-        </h1>
+    <>
+      <Container
+        fluid
+        className='d-flex align-items-center justify-content-center vh-100'
+      >
+        <Row className='justify-content-center w-100'>
+          <h1 style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            Log In to Your Palate Pilot Account
+          </h1>
 
-        <Col md={6} lg={4}>
-          <div
-            className='login-container p-4'
-            style={{
-              boxShadow: '2px 2px 2px 2px black',
-              backgroundColor: '#F8F9FA',
-            }}
-          >
-            <h2 className='text-center mb-4'>Login</h2>
-            <Form onSubmit={onSubmit}>
-              <Form.Group controlId='email'>
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                  type='email'
-                  name='email'
-                  value={email}
-                  style={{ backgroundColor: '#E9ECEF' }}
-                  onChange={onChange}
-                  className={errors.email ? 'is-invalid' : ''}
-                  required
-                />
-                {errors.email && (
-                  <Form.Text className='text-danger'>{errors.email}</Form.Text>
-                )}
-              </Form.Group>
-              <Form.Group controlId='password' className='mt-3'>
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                  type='password'
-                  name='password'
-                  value={password}
-                  style={{ backgroundColor: '#D3D3D3' }}
-                  onChange={onChange}
-                  className={errors.password ? 'is-invalid' : ''}
-                  required
-                />
-                {errors.password && (
-                  <Form.Text className='text-danger'>
-                    {errors.password}
-                  </Form.Text>
-                )}
-              </Form.Group>
-              <Button
-                type='submit'
-                className='btn btn-primary w-100 mt-4'
-                disabled={loading}
-              >
-                {loading ? 'Logging in...' : 'Login'}
-              </Button>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          <Col md={6} lg={4}>
+            <div
+              className='login-container p-4'
+              style={{
+                boxShadow: '2px 2px 2px 2px black',
+                backgroundColor: '#F8F9FA',
+              }}
+            >
+              <h2 className='text-center mb-4'>Login</h2>
+              <Form onSubmit={onSubmit}>
+                <Form.Group controlId='email'>
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type='email'
+                    name='email'
+                    value={email}
+                    style={{ backgroundColor: '#E9ECEF' }}
+                    onChange={onChange}
+                    className={errors.email ? 'is-invalid' : ''}
+                    required
+                  />
+                  {errors.email && (
+                    <Form.Text className='text-danger'>
+                      {errors.email}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Form.Group controlId='password' className='mt-3'>
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type='password'
+                    name='password'
+                    value={password}
+                    style={{ backgroundColor: '#D3D3D3' }}
+                    onChange={onChange}
+                    className={errors.password ? 'is-invalid' : ''}
+                    required
+                  />
+                  {errors.password && (
+                    <Form.Text className='text-danger'>
+                      {errors.password}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Button
+                  type='submit'
+                  className='btn btn-primary w-100 mt-4'
+                  disabled={loading}
+                >
+                  {loading ? 'Logging in...' : 'Login'}
+                </Button>
+              </Form>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 
