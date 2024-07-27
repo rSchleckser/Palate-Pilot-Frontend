@@ -29,5 +29,5 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "vite": "^5.3.4"
   },
-  "proxy": "https://palate-pilot-backend-n1td.onrender.com/profile/profile"
+  "proxy": "https://palate-pilot-backend-n1td.onrender.com"
 }
