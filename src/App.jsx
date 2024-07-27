@@ -6,9 +6,10 @@ import Login from './components/Login';
 import ProfilePage from './components/ProfilePage';
 import UserReviews from './components/UserReviews';
 import UserFavorites from './components/UserFavorites';
-import Meals from './components/Meals';
+import Meals from './components/Card';
+import './App.css';
 
-const App = () => {
+function App() {
   const username = 'John Doe';
   const favorites = ['Pizza', 'Burger', 'Sushi'];
   const reviews = [
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/auth/signup' element={<SignUp />} />
         <Route path='/auth/login' element={<Login />} />
+        <Route path='/foods' element={<Meals />} />
         <Route
           path='/profile'
           element={
@@ -41,6 +43,6 @@ const App = () => {
       </Routes>
     </>
   );
-};
+}
 
 export default App;

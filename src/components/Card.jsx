@@ -8,11 +8,9 @@ const Meals = () => {
   const [error, setError] = useState(null);
     const fetchData = async () => {
       try {
-        await axios.get('/food').then (res => {
-          console.log(res);
-          setFoods([res.data]) 
-        });
-        
+        const response = await axios.get('/food', {mode:'cors'});
+          console.log( JSON.stringify(response) );
+          setFoods( JSON.stringify(response) );
       } catch (error) {
         setError(error);
       }
