@@ -17,7 +17,7 @@ const ProfilePage = () => {
         }
 
         const response = await axios.get(
-          'http://localhost:3000/profile/profile',
+          'https://palate-pilot-backend-n1td.onrender.com/profile/profile',
           {
             headers: { 'x-auth-token': token },
           }
