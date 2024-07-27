@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: palate-pilot-frontend
+    buildCommand: "npm run build"
+    publishDirectory: "build" # or "dist", depending on your build setup
+    autoDeploy: true
