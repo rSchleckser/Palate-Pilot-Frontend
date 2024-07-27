@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
-
 import axios from 'axios';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
+        if (!token) {
+          navigate('/auth/login');
+          return;
+        }
+
         const response = await axios.get(
           'http://localhost:3000/profile/profile',
           {
@@ -17,14 +23,14 @@ const ProfilePage = () => {
           }
         );
         setUser(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
+        navigate('/auth/login');
       }
     };
 
     fetchUser();
-  }, []);
+  }, [navigate]);
 
   if (!user) return <p>Loading...</p>;
 
@@ -48,13 +54,21 @@ const ProfilePage = () => {
             <Col>
               <h5>Favorites</h5>
               <ListGroup variant='flush'>
-                {user.favorite_foods.map((favorite, index) => (
-                  <ListGroup.Item key={index}>
-                    {favorite.food} - {favorite.description}
-                  </ListGroup.Item>
-                ))}
+                {user.favorite_foods && user.favorite_foods.length > 0 ? (
+                  user.favorite_foods.map((favorite, index) => (
+                    <ListGroup.Item key={index}>
+                      {favorite.food} - {favorite.description}
+                    </ListGroup.Item>
+                  ))
+                ) : (
+                  <ListGroup.Item>No favorites found</ListGroup.Item>
+                )}
               </ListGroup>
-              <Button variant='primary' className='mt-3' href='/userfavorites'>
+              <Button
+                variant='primary'
+                className='mt-3'
+                onClick={() => navigate('/userfavorites')}
+              >
                 View All Favorites
               </Button>
             </Col>
@@ -64,16 +78,24 @@ const ProfilePage = () => {
             <Col>
               <h5>Reviews</h5>
               <ListGroup variant='flush'>
-                {user.reviews.map((review, index) => (
-                  <ListGroup.Item key={index}>
-                    {review.reviewText}
-                    <div className='text-muted'>
-                      Rating: {review.rating} / 5
-                    </div>
-                  </ListGroup.Item>
-                ))}
+                {user.reviews && user.reviews.length > 0 ? (
+                  user.reviews.map((review, index) => (
+                    <ListGroup.Item key={index}>
+                      {review.reviewText}
+                      <div className='text-muted'>
+                        Rating: {review.rating} / 5
+                      </div>
+                    </ListGroup.Item>
+                  ))
+                ) : (
+                  <ListGroup.Item>No reviews found</ListGroup.Item>
+                )}
               </ListGroup>
-              <Button variant='primary' className='mt-3' href='/userreviews'>
+              <Button
+                variant='primary'
+                className='mt-3'
+                onClick={() => navigate('/userreviews')}
+              >
                 View All Reviews
               </Button>
             </Col>

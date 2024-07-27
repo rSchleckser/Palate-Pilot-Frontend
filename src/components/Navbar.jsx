@@ -30,7 +30,9 @@ const MyNavbar = () => {
           Palate Pilot
         </Navbar.Brand>
         <Nav className='me-auto'>
-          <Nav.Link href='/'>Home</Nav.Link>
+          {!isLoggedIn && <Nav.Link href='/'>Home</Nav.Link>}
+          {isLoggedIn && <Nav.Link href='/home'>Welcome</Nav.Link>}
+          {isLoggedIn && <Nav.Link href='/foods'>Food</Nav.Link>}
           {isLoggedIn && <Nav.Link href='/profile'>Profile</Nav.Link>}
           {!isLoggedIn ? (
             <>

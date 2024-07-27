@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   ListGroup,
@@ -10,35 +10,40 @@ import {
 import axios from 'axios';
 
 const UserReviews = () => {
-  // Fake reviews data
-  const [reviews, setReviews] = useState([
-    {
-      _id: '1',
-      title: 'Great Pizza!',
-      content:
-        'The pizza was amazing with fresh ingredients and perfect crust.',
-    },
-    {
-      _id: '2',
-      title: 'Not Impressed',
-      content: 'The service was slow, and the food was cold.',
-    },
-    {
-      _id: '3',
-      title: 'Excellent Sushi',
-      content: 'Fresh and tasty sushi, highly recommend!',
-    },
-  ]);
+  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [editModalShow, setEditModalShow] = useState(false);
   const [currentReview, setCurrentReview] = useState(null);
   const [updatedTitle, setUpdatedTitle] = useState('');
   const [updatedContent, setUpdatedContent] = useState('');
 
+  // Fetch reviews from the backend
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('/reviews', {
+          headers: {
+            'x-auth-token': token,
+          },
+        });
+        setReviews(response.data);
+      } catch (err) {
+        setError('Failed to fetch reviews');
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
   const handleDelete = async (reviewId) => {
     try {
-      // Simulate deletion
-      await axios.delete(`/api/reviews/${reviewId}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`/reviews/${reviewId}`, {
+        headers: {
+          'x-auth-token': token,
+        },
+      });
       setReviews(reviews.filter((review) => review._id !== reviewId));
     } catch (err) {
       setError('Failed to delete review');
@@ -54,10 +59,19 @@ const UserReviews = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`/api/reviews/${currentReview._id}`, {
-        title: updatedTitle,
-        content: updatedContent,
-      });
+      const token = localStorage.getItem('token');
+      await axios.put(
+        `/reviews/${currentReview._id}`,
+        {
+          title: updatedTitle,
+          content: updatedContent,
+        },
+        {
+          headers: {
+            'x-auth-token': token,
+          },
+        }
+      );
       // Update local state
       setReviews(
         reviews.map((review) =>

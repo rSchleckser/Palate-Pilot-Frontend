@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   ListGroup,
@@ -10,21 +10,30 @@ import {
 import axios from 'axios';
 
 const UserFavorites = () => {
-  // Fake favorites data
-  const [favorites, setFavorites] = useState([
-    { _id: '1', name: 'Pizza' },
-    { _id: '2', name: 'Burger' },
-    { _id: '3', name: 'Sushi' },
-  ]);
+  const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
   const [editModalShow, setEditModalShow] = useState(false);
   const [currentFavorite, setCurrentFavorite] = useState(null);
   const [updatedName, setUpdatedName] = useState('');
+  const [updatedDescription, setUpdatedDescription] = useState('');
+  const [updatedCountryId, setUpdatedCountryId] = useState('');
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const response = await axios.get('/favorites');
+        setFavorites(response.data);
+      } catch (err) {
+        setError('Failed to fetch favorites');
+      }
+    };
+
+    fetchFavorites();
+  }, []);
 
   const handleDelete = async (favoriteId) => {
     try {
-      // Simulate deletion
-      await axios.delete(`/api/favorites/${favoriteId}`);
+      await axios.delete(`/favorites/${favoriteId}`);
       setFavorites(favorites.filter((favorite) => favorite._id !== favoriteId));
     } catch (err) {
       setError('Failed to delete favorite');
@@ -33,20 +42,28 @@ const UserFavorites = () => {
 
   const handleEdit = (favorite) => {
     setCurrentFavorite(favorite);
-    setUpdatedName(favorite.name);
+    setUpdatedName(favorite.food);
+    setUpdatedDescription(favorite.description);
+    setUpdatedCountryId(favorite.country_id);
     setEditModalShow(true);
   };
 
   const handleSave = async () => {
     try {
-      await axios.put(`/api/favorites/${currentFavorite._id}`, {
-        name: updatedName,
+      await axios.put(`/favorites/${currentFavorite._id}`, {
+        food: updatedName,
+        description: updatedDescription,
+        country_id: updatedCountryId,
       });
-      // Update local state
       setFavorites(
         favorites.map((favorite) =>
           favorite._id === currentFavorite._id
-            ? { ...favorite, name: updatedName }
+            ? {
+                ...favorite,
+                food: updatedName,
+                description: updatedDescription,
+                country_id: updatedCountryId,
+              }
             : favorite
         )
       );
@@ -61,14 +78,16 @@ const UserFavorites = () => {
       <h2 className='mb-4'>User Favorites</h2>
       {error && <Alert variant='danger'>{error}</Alert>}
       <ListGroup>
-        {favorites.length > 0 ? (
+        {Array.isArray(favorites) && favorites.length > 0 ? (
           favorites.map((favorite) => (
             <ListGroup.Item
               key={favorite._id}
               className='d-flex justify-content-between align-items-center'
             >
               <div>
-                <h5>{favorite.name}</h5>
+                <h5>{favorite.food}</h5>
+                <p>{favorite.description}</p>
+                <p>{favorite.country_id}</p>
               </div>
               <div>
                 <Button
@@ -105,6 +124,22 @@ const UserFavorites = () => {
                 type='text'
                 value={updatedName}
                 onChange={(e) => setUpdatedName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId='editDescription'>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type='text'
+                value={updatedDescription}
+                onChange={(e) => setUpdatedDescription(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId='editCountryId'>
+              <Form.Label>Country ID</Form.Label>
+              <Form.Control
+                type='text'
+                value={updatedCountryId}
+                onChange={(e) => setUpdatedCountryId(e.target.value)}
               />
             </Form.Group>
           </Form>
