@@ -1,6 +1,33 @@
-import { Card, Button, ListGroup, Container, Row, Col } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Container, Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
 
-const ProfilePage = (props) => {
+import axios from 'axios';
+
+const ProfilePage = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(
+          'http://localhost:3000/profile/profile',
+          {
+            headers: { 'x-auth-token': token },
+          }
+        );
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (!user) return <p>Loading...</p>;
+
   return (
     <Container className='d-flex justify-content-center mt-5'>
       <Card style={{ backgroundColor: '#F8F9FA', width: '50%' }}>
@@ -13,7 +40,7 @@ const ProfilePage = (props) => {
                 className='rounded-circle mb-3'
                 style={{ width: '150px', height: '150px' }}
               />
-              <h3>{props.username}</h3>
+              <h3>{user.username}</h3>
             </Col>
           </Row>
 
@@ -21,8 +48,10 @@ const ProfilePage = (props) => {
             <Col>
               <h5>Favorites</h5>
               <ListGroup variant='flush'>
-                {props.favorites.map((favorite, index) => (
-                  <ListGroup.Item key={index}>{favorite}</ListGroup.Item>
+                {user.favorite_foods.map((favorite, index) => (
+                  <ListGroup.Item key={index}>
+                    {favorite.food} - {favorite.description}
+                  </ListGroup.Item>
                 ))}
               </ListGroup>
               <Button variant='primary' className='mt-3' href='/userfavorites'>
@@ -35,8 +64,13 @@ const ProfilePage = (props) => {
             <Col>
               <h5>Reviews</h5>
               <ListGroup variant='flush'>
-                {props.reviews.map((review, index) => (
-                  <ListGroup.Item key={index}>{review}</ListGroup.Item>
+                {user.reviews.map((review, index) => (
+                  <ListGroup.Item key={index}>
+                    {review.reviewText}
+                    <div className='text-muted'>
+                      Rating: {review.rating} / 5
+                    </div>
+                  </ListGroup.Item>
                 ))}
               </ListGroup>
               <Button variant='primary' className='mt-3' href='/userreviews'>

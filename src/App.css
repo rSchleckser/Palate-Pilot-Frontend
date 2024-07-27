@@ -86,6 +86,17 @@ main {
     font-size: 1.7rem;
 }
 
+/* Welcome  */
+.home-content2 {
+    text-align: center;
+    margin-top: 25rem;
+}
+
+.home-text2 {
+    margin-bottom: 4rem;
+    font-size: 1.7rem;
+}
+
 .home-text p {
     margin: 0;
 }

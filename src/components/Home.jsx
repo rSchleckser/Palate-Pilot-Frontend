@@ -29,9 +29,7 @@ const Home = () => {
           </LinkContainer>
         </div>
       </div>
-      <div>
-        {/* <GetData /> */}
-      </div>
+      <div>{/* <GetData /> */}</div>
     </div>
   );
 };

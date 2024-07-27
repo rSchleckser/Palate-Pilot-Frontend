@@ -29,7 +29,7 @@ const Login = () => {
     try {
       const res = await axios.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      navigate('/home');
+      navigate('/profile');
     } catch (err) {
       if (err.response && err.response.data.errors) {
         const errorMessages = err.response.data.errors.reduce((acc, error) => {
@@ -38,7 +38,8 @@ const Login = () => {
         }, {});
         setErrors(errorMessages);
       } else {
-        console.error('Login error:', err);
+        console.error('Login error:', err.message);
+        setErrors({ general: 'An error occurred. Please try again.' });
       }
     } finally {
       setLoading(false);
