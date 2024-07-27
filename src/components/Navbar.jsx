@@ -8,6 +8,8 @@ const MyNavbar = () => {
   const handleLogout = () => {
     // Clear the token from local storage
     localStorage.removeItem('token');
+
+    // Redirect to the login page or home page
     navigate('/auth/login');
   };
 

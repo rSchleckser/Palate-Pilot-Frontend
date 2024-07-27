@@ -1,14 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Welcome from './components/Welcome';
+import Navbar from './components/Navbar';
 import SignUp from './components/signUp';
 import Login from './components/Login';
 import ProfilePage from './components/ProfilePage';
 import UserReviews from './components/UserReviews';
 import UserFavorites from './components/UserFavorites';
 import Meals from './components/Meals';
+import './App.css';
 
-const App = () => {
+function App() {
   const username = 'John Doe';
   const favorites = ['Pizza', 'Burger', 'Sushi'];
   const reviews = [
@@ -22,6 +24,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Welcome />} />
         <Route path='/auth/signup' element={<SignUp />} />
         <Route path='/auth/login' element={<Login />} />
         <Route
@@ -40,6 +43,6 @@ const App = () => {
       </Routes>
     </>
   );
-};
+}
 
 export default App;
