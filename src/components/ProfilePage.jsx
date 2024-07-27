@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card, Button, ListGroup, Container, Row, Col } from 'react-bootstrap';
+import { Container, Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
+
 import axios from 'axios';
 
 const ProfilePage = () => {
@@ -8,11 +9,15 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const userId = '64b2f6c04a3e3f6b0b1f9c74'; // Replace with actual user ID or retrieve from context/auth state
+        const token = localStorage.getItem('token');
         const response = await axios.get(
-          `http://localhost:3000/profile/profile?userId=${userId}`
+          'http://localhost:3000/profile/profile',
+          {
+            headers: { 'x-auth-token': token },
+          }
         );
         setUser(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
