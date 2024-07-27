@@ -7,7 +7,7 @@ import Review from './components/Review';
 import ProfilePage from './components/ProfilePage';
 import UserReviews from './components/UserReviews';
 import UserFavorites from './components/UserFavorites';
-import Meals from './components/Card';
+import Meals from './components/Meals';
 import './App.css';
 
 function App() {
