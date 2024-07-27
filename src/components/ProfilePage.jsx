@@ -1,16 +1,17 @@
-// src/components/ProfilePage.js
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
-import { fetchUserProfile } from '../services/apiService'; // Import the service function
+import axios from 'axios';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
+      setLoading(true);
       try {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -18,18 +19,28 @@ const ProfilePage = () => {
           return;
         }
 
-        const userData = await fetchUserProfile(token);
-        setUser(userData);
+        const response = await axios.get(
+          'https://palate-pilot-backend-n1td.onrender.com/profile/profile',
+          {
+            headers: { 'x-auth-token': token },
+          }
+        );
+        setUser(response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
+        setError('Failed to fetch user data. Please log in again.');
         navigate('/auth/login');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, [navigate]);
 
-  if (!user) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!user) return <p>No user data found</p>;
 
   return (
     <Container className='d-flex justify-content-center mt-5'>

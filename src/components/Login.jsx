@@ -1,8 +1,6 @@
-// src/components/Login.js
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../services/apiService'; // Import the service function
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -29,8 +27,9 @@ const Login = () => {
     setErrors({});
 
     try {
-      const res = await loginUser(email, password);
-      localStorage.setItem('token', res.token);
+      const res = await axios.post('/auth/login', { email, password });
+      localStorage.setItem('token', res.data.token);
+      console.log(res.data.token);
       navigate('/profile');
     } catch (err) {
       if (err.response && err.response.data.errors) {
